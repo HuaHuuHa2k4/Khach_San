@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
-$user = "root";      // user mặc định của XAMPP
-$pass = "";          // pass mặc định (rỗng)
+$user = "root"; 
+$pass = "";
 $dbname = "khachsan";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
