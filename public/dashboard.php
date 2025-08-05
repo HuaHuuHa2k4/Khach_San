@@ -53,7 +53,7 @@ unset($_SESSION['error']);
     <h2>Phòng Cho Thuê</h2>
     <div class="rooms">
       <div class="room-card">
-        <img src="/public/img/z6875422571027_cff5a3a05f2e12f2766c93856621e9b9.jpg" width='100%'  alt="Phòng Deluxe">
+        <img src="../public/img/Anh_1.jpg" width='100%'  alt="Phòng Deluxe">
         <h3>Phòng Deluxe</h3>
         <p>Giá: 1.200.000 VNĐ / đêm</p>
         <p>Giường đôi, view biển, có bồn tắm</p>
@@ -61,7 +61,7 @@ unset($_SESSION['error']);
       </div>
 
       <div class="room-card">
-        <img src="/public/img/z6875422571084_8a751eafe60e3a487b3a06e24fbe58c3.jpg" width='100%' alt="Phòng Superior">
+        <img src="../public/img/Anh_2.jpg" alt="Phòng Superior">
         <h3>Phòng Superior</h3>
         <p>Giá: 950.000 VNĐ / đêm</p>
         <p>Giường đôi, máy lạnh, wifi miễn phí</p>
@@ -69,15 +69,15 @@ unset($_SESSION['error']);
       </div>
 
       <div class="room-card">
-        <img src="/public/img/z6875422571085_ebde0f61309cc7399bc3d1ecde54c8b6.jpg" width='100%' alt="Phòng Standard">
+        <img src="../public/img/Anh_3.jpg" alt="Phòng Standard">
         <h3>Phòng Standard</h3>
         <p>Giá: 750.000 VNĐ / đêm</p>
         <p>Phòng nhỏ gọn, phù hợp 2 người</p>
         <button>Đặt ngay</button>
       </div>
 
-            <div class="room-card">
-        <img src="/public/img/z6875422619767_be5c9ecbc302f2adf157392e3a08d931.jpg" width='100%' alt="Phòng Deluxe">
+        <div class="room-card">
+        <img src="../public/img/Anh_4.jpg" alt="Phòng Deluxe">
         <h3>Phòng Deluxe</h3>
         <p>Giá: 1.200.000 VNĐ / đêm</p>
         <p>Giường đôi, view biển, có bồn tắm</p>
@@ -85,7 +85,7 @@ unset($_SESSION['error']);
       </div>
 
       <div class="room-card">
-        <img src="public/img/z6875430926424_8682a597bfd81115d1dc7316c47f9b2f.jpg" alt="Phòng Superior">
+        <img src="../public/img/Anh_5.jpg" alt="Phòng Superior">
         <h3>Phòng Superior</h3>
         <p>Giá: 950.000 VNĐ / đêm</p>
         <p>Giường đôi, máy lạnh, wifi miễn phí</p>
@@ -93,7 +93,7 @@ unset($_SESSION['error']);
       </div>
 
       <div class="room-card">
-        <img src="public/img/z6875430973919_83009757490dbc4ffe7b3e2ad893b8e4.jpg" alt="Phòng Standard">
+        <img src="../public/img/Anh_6.jpg" alt="Phòng Standard">
         <h3>Phòng Standard</h3>
         <p>Giá: 750.000 VNĐ / đêm</p>
         <p>Phòng nhỏ gọn, phù hợp 2 người</p>
@@ -101,7 +101,7 @@ unset($_SESSION['error']);
       </div>
 
             <div class="room-card">
-        <img src="public/img/z6875431007524_d1ae0b2c4ae01a6dac5d4979fa450c5e.jpg" alt="Phòng Superior">
+        <img src="../public/img/Anh_7.jpg" alt="Phòng Superior">
         <h3>Phòng Superior</h3>
         <p>Giá: 950.000 VNĐ / đêm</p>
         <p>Giường đôi, máy lạnh, wifi miễn phí</p>
@@ -109,7 +109,7 @@ unset($_SESSION['error']);
       </div>
 
       <div class="room-card">
-        <img src="public/img/z6875431044632_963a0b1b87700bbf5e0df3397a285e9a.jpg" alt="Phòng Standard">
+        <img src="../public/img/Anh_8.jpg" alt="Phòng Standard">
         <h3>Phòng Standard</h3>
         <p>Giá: 750.000 VNĐ / đêm</p>
         <p>Phòng nhỏ gọn, phù hợp 2 người</p>
