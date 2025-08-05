@@ -10,8 +10,8 @@ services:
     restart: always
     environment:
       DB_HOST: db
-      DB_USER: user
-      DB_PASSWORD: password
+      DB_USER: root
+      DB_PASSWORD: root
       DB_NAME: khachsan
 
   db:
@@ -20,8 +20,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: khachsan
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
     volumes:
       - db_data:/var/lib/mysql
       - ./database/khachsan.sql:/docker-entrypoint-initdb.d/khachsan.sql

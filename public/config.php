@@ -1,19 +1,14 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';           // 🔴 MISSING TRƯỚC ĐÓ (XAMPP thường không có mật khẩu)
-$db   = 'khachsan';
+// Đọc từ biến môi trường, hoặc fallback mặc định
+$host = getenv("DB_HOST") ?: "localhost";
+$user = getenv("DB_USER") ?: "root";
+$pass = getenv("DB_PASSWORD") ?: "";
+$db   = getenv("DB_NAME") ?: "khachsan";
 
-// Khi deploy Docker hoặc Render, đọc từ biến môi trường
-if (getenv("DB_HOST")) {
-    $host = getenv("DB_HOST");
-    $user = getenv("DB_USER");
-    $pass = getenv("DB_PASSWORD");
-    $db   = getenv("DB_NAME");
-}
-
+// Kết nối CSDL
 $conn = new mysqli($host, $user, $pass, $db);
 
+// Kiểm tra lỗi
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
