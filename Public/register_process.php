@@ -5,6 +5,7 @@ require 'config.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']); // 🆕 Thêm dòng này
     $password = $_POST['password'];
     $password_confirm = $_POST['password_confirm'];
 
@@ -14,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Kiểm tra username/email đã tồn tại chưa
-    $stmt = $conn->prepare("SELECT username, email FROM users WHERE username = ? OR email = ?");
-    $stmt->bind_param("ss", $username, $email);
+    // Kiểm tra username, email, hoặc số điện thoại đã tồn tại chưa
+    $stmt = $conn->prepare("SELECT username, email, phone FROM users WHERE username = ? OR email = ? OR phone = ?");
+    $stmt->bind_param("sss", $username, $email, $phone);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -26,8 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['error'] = "Tên đăng nhập đã được sử dụng. Vui lòng chọn tên khác.";
         } elseif ($existing['email'] === $email) {
             $_SESSION['error'] = "Email đã được sử dụng. Vui lòng chọn email khác.";
+        } elseif ($existing['phone'] === $phone) {
+            $_SESSION['error'] = "Số điện thoại đã được sử dụng. Vui lòng nhập số khác.";
         } else {
-            $_SESSION['error'] = "Tên đăng nhập hoặc email đã được sử dụng.";
+            $_SESSION['error'] = "Thông tin đăng ký đã được sử dụng.";
         }
         $stmt->close();
         header("Location: register.php");
@@ -35,13 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $stmt->close();
 
-
-    // Bỏ phần mã hóa mật khẩu, lưu thẳng mật khẩu
+    // Lưu mật khẩu dưới dạng văn bản (chưa mã hóa)
     $password_plain = $password;
 
-    // Thêm người dùng mới
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $password_plain);
+    $stmt = $conn->prepare("INSERT INTO users (username, email, phone, password) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $username, $email, $phone, $password_plain);
     if ($stmt->execute()) {
         $_SESSION['success'] = "Đăng ký thành công. Vui lòng đăng nhập.";
         header("Location: index.php");

@@ -11,8 +11,6 @@ unset($_SESSION['error']);
   <meta charset="UTF-8">
   <title>Trang Đặt Phòng Khách Sạn</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-ZW2p0kKpiYzG8ZLOQ0sEZBhtCHnbRcsKKhKxQe9ktH3vGJEGccs8eNRRphFv3YjQWosjEM7GlgHrLkD/RL8aDQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
 <body>
   <header>
     <div class="topbar">
@@ -50,35 +48,6 @@ unset($_SESSION['error']);
     <input type="text" placeholder="Từ khóa tìm kiếm">
     <button>TÌM KIẾM</button>
   </section>
-
-  <!-- FORM ĐĂNG KÝ nếu chưa đăng nhập -->
-  <?php if (!$loggedIn): ?>
-  <div id="registerPopup" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeRegister">&times;</span>
-
-      <?php if ($error): ?>
-        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
-      <?php endif; ?>
-
-      <form action="register_process.php" method="post">
-        <label for="username">Tên đăng nhập:</label><br>
-        <input type="text" name="username" id="username" required><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" name="email" id="email" required><br>
-
-        <label for="password">Mật khẩu:</label><br>
-        <input type="password" name="password" id="password" required><br>
-
-        <label for="password_confirm">Xác nhận mật khẩu:</label><br>
-        <input type="password" name="password_confirm" id="password_confirm" required><br><br>
-
-        <button type="submit">Đăng ký</button>
-      </form>
-    </div>
-  </div>
-  <?php endif; ?>
 
   <section class="room-list">
     <h2>Phòng Cho Thuê</h2>

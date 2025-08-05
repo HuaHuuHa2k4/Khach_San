@@ -5,16 +5,6 @@ body {
   background-color: #f4f4f4;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin: 8px 0 16px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
-}
-
 input:focus {
   border-color: #4CAF50;
   outline: none;
