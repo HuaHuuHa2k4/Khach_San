@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: khachsan-php
+    env: docker
+    plan: free
+    repo: https://github.com/your-username/your-repo
+    branch: main
+    dockerfilePath: ./Dockerfile
+    buildFilter:
+      paths:
+        - Dockerfile
+        - docker-compose.yml
+        - public/**
