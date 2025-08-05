@@ -9,7 +9,7 @@ COPY ./public/ /var/www/html/
 
 # Cấp quyền cho Apache nếu cần
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
+ && chmod -R 755 /var/www/html
 
 # Bật mod_rewrite nếu bạn dùng .htaccess
 RUN a2enmod rewrite
