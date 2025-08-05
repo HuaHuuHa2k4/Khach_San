@@ -33,7 +33,7 @@
     <p>Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
 
       <?php if (!isset($_SESSION['user_id'])): ?>
-      <p><a href="dashboard.php">⬅ Quay lại trang chính</a></p>
+      <p><a href="dashboard.php">Quay lại trang chính</a></p>
       <?php endif; ?>
   </div>
   

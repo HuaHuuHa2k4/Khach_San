@@ -53,7 +53,7 @@
       <p>Đã có tài khoản? <a href="index.php">Đăng nhập</a></p>
 
       <?php if (!isset($_SESSION['user_id'])): ?>
-      <p><a href="dashboard.php">⬅ Quay lại trang chính</a></p>
+      <p><a href="dashboard.php">Quay lại trang chính</a></p>
       <?php endif; ?>
     </div>
 
