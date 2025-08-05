@@ -5,6 +5,17 @@
   <title>Đăng nhập</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
+  <style>
+    input[type="text"], input[type="email"], input[type="password"], input[type="phone"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+  </style>
 <body>
   <div class="login">
     <h2>Đăng nhập</h2>
