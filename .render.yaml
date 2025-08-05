@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: khachsan-php
+    name: Khach_San
     env: docker
     plan: free
-    repo: https://github.com/your-username/your-repo
+    repo: https://github.com/HuaHuuHa2k4/Khach_San
     branch: main
     dockerfilePath: ./Dockerfile
     buildFilter:
