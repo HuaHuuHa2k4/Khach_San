@@ -7,16 +7,15 @@ services:
       - "80:80"
     depends_on:
       - db
-    restart: always
     environment:
       DB_HOST: db
       DB_USER: root
       DB_PASSWORD: root
       DB_NAME: khachsan
+    restart: always
 
   db:
     image: mysql:5.7
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: khachsan

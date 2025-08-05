@@ -1,4 +1,15 @@
+      <?php
+      session_start();
+      if (isset($_SESSION['error'])) {
+          echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
+          unset($_SESSION['error']); // Xóa lỗi sau khi hiển thị
+      }
 
+      if (isset($_SESSION['success'])) {
+          echo '<p style="color: green;">' . $_SESSION['success'] . '</p>';
+          unset($_SESSION['success']); // Xóa thông báo sau khi hiển thị
+      }
+      ?>
   <!DOCTYPE html>
   <html lang="vi">
   <head>
@@ -20,19 +31,6 @@
   <body>
     <div class="register">
       <h2>Đăng ký tài khoản</h2>
-
-      <?php
-      session_start();
-      if (isset($_SESSION['error'])) {
-          echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
-          unset($_SESSION['error']); // Xóa lỗi sau khi hiển thị
-      }
-
-      if (isset($_SESSION['success'])) {
-          echo '<p style="color: green;">' . $_SESSION['success'] . '</p>';
-          unset($_SESSION['success']); // Xóa thông báo sau khi hiển thị
-      }
-      ?>
 
       <form action="register_process.php" method="POST" id="registerForm">
         <label for="username">Tên đăng nhập:</label><br />
