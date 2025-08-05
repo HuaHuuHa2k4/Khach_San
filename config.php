@@ -1,16 +1,19 @@
 <?php
-// Thiết lập mặc định (dành cho local)
-$host = 'db'; // Docker dùng tên service
+// Thiết lập mặc định (cho Docker/Render)
+$host = 'db'; // Docker sử dụng tên service
 $user = 'root';
 $pass = 'root';
 $db   = 'khachsan';
 
-// Nếu đang chạy trên local (VD: XAMPP), thì sửa lại host
+// Nếu đang chạy LOCAL (VD: XAMPP), thì dùng cấu hình local
 if (!getenv("RENDER")) {
     $host = 'localhost';
+    $user = 'root';
+    $pass = ''; // ❗️XAMPP mặc định root không có password
+    $db   = 'khachsan';
 }
 
-// Nếu dùng biến môi trường (Render sẽ tự truyền)
+// Nếu có biến môi trường (Render), override lại
 if (getenv("DB_HOST")) {
     $host = getenv("DB_HOST");
     $user = getenv("DB_USER");
@@ -18,6 +21,7 @@ if (getenv("DB_HOST")) {
     $db   = getenv("DB_NAME");
 }
 
+// Kết nối MySQL
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
