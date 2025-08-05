@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 04, 2025 lúc 04:45 PM
+-- Thời gian đã tạo: Th8 05, 2025 lúc 06:16 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -31,15 +31,16 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(14, 'huahuuha2k4', 'huahuuha2k4@gmail.com', '1');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `phone`) VALUES
+(17, 'huahuuha2k4', 'huahuuha2k4@gmail.com', '1', '0817834630');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -59,7 +60,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
