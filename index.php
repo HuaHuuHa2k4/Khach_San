@@ -1,14 +1,4 @@
-<?php
-session_start();
-if (isset($_SESSION['error'])) {
-  echo '<p style="color:red">' . $_SESSION['error'] . '</p>';
-  unset($_SESSION['error']);
-}
-if (isset($_SESSION['success'])) {
-  echo '<p style="color:green">' . $_SESSION['success'] . '</p>';
-  unset($_SESSION['success']);
-}
-?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -31,6 +21,18 @@ if (isset($_SESSION['success'])) {
   <div class="login">
     <h2>Đăng nhập</h2>
     
+    <?php
+    session_start();
+    if (isset($_SESSION['error'])) {
+      echo '<p style="color:red">' . $_SESSION['error'] . '</p>';
+      unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+      echo '<p style="color:green">' . $_SESSION['success'] . '</p>';
+      unset($_SESSION['success']);
+    }
+    ?>
+
     <form action="login_process.php" method="POST" id="loginForm">
       <label for="username">Tên đăng nhập hoặc Email:</label><br />
       <input type="text" name="username_email" id="username_email" required /><br />
