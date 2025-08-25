@@ -19,19 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Đăng nhập thành công
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            header("Location: dashboard.php");
+            header("Location: index.php");
             exit;
         } else {
             $_SESSION['error'] = "Mật khẩu không chính xác.";
-            header("Location: index.php");
+            header("Location: dashboard.php");
             exit;
         }
     } else {
         $_SESSION['error'] = "Tài khoản không tồn tại.";
-        header("Location: index.php");
+        header("Location: dashboard.php");
         exit;
     }
 } else {
-    header("Location: index.php");
+    header("Location: dashboard.php");
 }
 ?>

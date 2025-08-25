@@ -1,125 +1,54 @@
-<?php
-session_start();
-$loggedIn = isset($_SESSION['user_id']);
-$username = $loggedIn ? htmlspecialchars($_SESSION['username']) : '';
-$error = $_SESSION['error'] ?? '';
-unset($_SESSION['error']);
-?>
+    
+    <?php
+    session_start();
+    if (isset($_SESSION['error'])) {
+      echo '<p style="color:red">' . $_SESSION['error'] . '</p>';
+      unset($_SESSION['error']);
+    }
+    if (isset($_SESSION['success'])) {
+      echo '<p style="color:green">' . $_SESSION['success'] . '</p>';
+      unset($_SESSION['success']);
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Trang Đặt Phòng Khách Sạn</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+  <style>
+    input[type="text"], input[type="email"], input[type="password"], input[type="phone"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+  </style>
 <body>
-  <header>
-    <div class="topbar">
-      <div class="logo">Hotel<span>ATR</span></div>
-      <div class="contact">
-        Hotline: <a href="tel:0817834630">0817834630</a>
-      </div>
-      <div class="language-login">
-        <div class="account-icon">
-          <?php if ($loggedIn): ?>
-            <span>👤 <?php echo $username; ?> | <a href="logout.php">Đăng xuất</a></span>
-          <?php else: ?>
-            <a href="register.php">
-              Tài Khoản
-            </a>
-          <?php endif; ?>
-        </div>
-      </div>
-    </div>
-    <nav class="main-nav">
-      <a href="#">GIỚI THIỆU</a>
-      <a href="#">TIN TỨC</a>
-      <a href="#">CĂN HỘ CHO THUÊ</a>
-      <a href="#">DỊCH VỤ</a>
-      <a href="#">LIÊN HỆ</a>
-    </nav>
-  </header>
+  <div class="login">
+    <h2>Đăng nhập</h2>
 
-  <section class="search-bar">
-    <select>
-      <option>LOẠI PHÒNG</option>
-    </select>
-    <input type="date" value="2019-08-05">
-    <input type="date" value="2019-08-05">
-    <input type="text" placeholder="Từ khóa tìm kiếm">
-    <button>TÌM KIẾM</button>
-  </section>
+    <form action="login_process.php" method="POST" id="loginForm">
+      <label for="username">Tên đăng nhập hoặc Email:</label><br />
+      <input type="text" name="username_email" id="username_email" required /><br />
 
-  <section class="room-list">
-    <h2>Phòng Cho Thuê</h2>
-    <div class="rooms">
-      <div class="room-card">
-        <img src="../public/img/Anh_1.jpg" width='100%'  alt="Phòng Deluxe">
-        <h3>Phòng Deluxe</h3>
-        <p>Giá: 1.200.000 VNĐ / đêm</p>
-        <p>Giường đôi, view biển, có bồn tắm</p>
-        <button>Đặt ngay</button>
-      </div>
+      <label for="password">Mật khẩu:</label><br />
+      <input type="password" name="password" id="password" required /><br />
 
-      <div class="room-card">
-        <img src="../public/img/Anh_2.jpg" alt="Phòng Superior">
-        <h3>Phòng Superior</h3>
-        <p>Giá: 950.000 VNĐ / đêm</p>
-        <p>Giường đôi, máy lạnh, wifi miễn phí</p>
-        <button>Đặt ngay</button>
-      </div>
+      <button type="submit">Đăng nhập</button>
+    </form>
 
-      <div class="room-card">
-        <img src="../public/img/Anh_3.jpg" alt="Phòng Standard">
-        <h3>Phòng Standard</h3>
-        <p>Giá: 750.000 VNĐ / đêm</p>
-        <p>Phòng nhỏ gọn, phù hợp 2 người</p>
-        <button>Đặt ngay</button>
-      </div>
+    <p>Chưa có tài khoản? <a href="register.php">Đăng ký</a></p>
 
-        <div class="room-card">
-        <img src="../public/img/Anh_4.jpg" alt="Phòng Deluxe">
-        <h3>Phòng Deluxe</h3>
-        <p>Giá: 1.200.000 VNĐ / đêm</p>
-        <p>Giường đôi, view biển, có bồn tắm</p>
-        <button>Đặt ngay</button>
-      </div>
-
-      <div class="room-card">
-        <img src="../public/img/Anh_5.jpg" alt="Phòng Superior">
-        <h3>Phòng Superior</h3>
-        <p>Giá: 950.000 VNĐ / đêm</p>
-        <p>Giường đôi, máy lạnh, wifi miễn phí</p>
-        <button>Đặt ngay</button>
-      </div>
-
-      <div class="room-card">
-        <img src="../public/img/Anh_6.jpg" alt="Phòng Standard">
-        <h3>Phòng Standard</h3>
-        <p>Giá: 750.000 VNĐ / đêm</p>
-        <p>Phòng nhỏ gọn, phù hợp 2 người</p>
-        <button>Đặt ngay</button>
-      </div>
-
-            <div class="room-card">
-        <img src="../public/img/Anh_7.jpg" alt="Phòng Superior">
-        <h3>Phòng Superior</h3>
-        <p>Giá: 950.000 VNĐ / đêm</p>
-        <p>Giường đôi, máy lạnh, wifi miễn phí</p>
-        <button>Đặt ngay</button>
-      </div>
-
-      <div class="room-card">
-        <img src="../public/img/Anh_8.jpg" alt="Phòng Standard">
-        <h3>Phòng Standard</h3>
-        <p>Giá: 750.000 VNĐ / đêm</p>
-        <p>Phòng nhỏ gọn, phù hợp 2 người</p>
-        <button>Đặt ngay</button>
-      </div>
-    </div>
-  </section>
-
-
+      <?php if (!isset($_SESSION['user_id'])): ?>
+      <p><a href="index.php">Quay lại trang chính</a></p>
+      <?php endif; ?>
+  </div>
+  
   <script src="js/script.js"></script>
 </body>
 </html>
-
