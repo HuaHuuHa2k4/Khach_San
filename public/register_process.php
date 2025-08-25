@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ssss", $username, $email, $phone, $password_plain);
     if ($stmt->execute()) {
         $_SESSION['success'] = "Đăng ký thành công. Vui lòng đăng nhập.";
-        header("Location: index.php");
+        header("Location: dashboard.php");
     } else {
         $_SESSION['error'] = "Đã có lỗi xảy ra. Vui lòng thử lại.";
         header("Location: register.php");

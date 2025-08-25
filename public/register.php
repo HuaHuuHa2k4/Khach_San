@@ -1,15 +1,15 @@
-      <?php
-      session_start();
-      if (isset($_SESSION['error'])) {
-          echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
-          unset($_SESSION['error']); // Xóa lỗi sau khi hiển thị
-      }
+<?php
+session_start();
+if (isset($_SESSION['error'])) {
+    echo '<p style="color: red;">' . $_SESSION['error'] . '</p>';
+    unset($_SESSION['error']); // Xóa lỗi sau khi hiển thị
+}
 
-      if (isset($_SESSION['success'])) {
-          echo '<p style="color: green;">' . $_SESSION['success'] . '</p>';
-          unset($_SESSION['success']); // Xóa thông báo sau khi hiển thị
-      }
-      ?>
+if (isset($_SESSION['success'])) {
+    echo '<p style="color: green;">' . $_SESSION['success'] . '</p>';
+    unset($_SESSION['success']); // Xóa thông báo sau khi hiển thị
+}
+?>
   <!DOCTYPE html>
   <html lang="vi">
   <head>
