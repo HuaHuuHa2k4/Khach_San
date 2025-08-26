@@ -1,18 +1,19 @@
-# Sử dụng image PHP 8.2 có Apache
+# Dockerfile (sửa)
 FROM php:8.2-apache
 
-# Cài tiện ích PHP để kết nối MySQL
-RUN docker-php-ext-install mysqli
+# Cài extensions cần thiết
+RUN docker-php-ext-install mysqli pdo_mysql
 
-# Sao chép mã nguồn vào thư mục gốc của Apache
-COPY ./public/ /var/www/html/
+# Bật mod_rewrite và cho phép .htaccess
+RUN a2enmod rewrite \
+    && sed -ri 's/AllowOverride None/AllowOverride All/i' /etc/apache2/apache2.conf
 
-# Cấp quyền cho Apache nếu cần
-RUN chown -R www-data:www-data /var/www/html \
- && chmod -R 755 /var/www/html
+# Không đổi DocumentRoot (mặc định /var/www/html)
+WORKDIR /var/www/html
 
-# Bật mod_rewrite nếu bạn dùng .htaccess
-RUN a2enmod rewrite
+# Copy source
+COPY . /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
-# Mở port 80
-EXPOSE 80
+# Hỗ trợ biến PORT (Render)
+CMD ["bash", "-lc", "if [ -n \"$PORT\" ]; then sed -ri \"s/^Listen 80/Listen ${PORT}/\" /etc/apache2/ports.conf; fi; exec apache2-foreground"]
