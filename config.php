@@ -1,16 +1,22 @@
 <?php
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+// Lấy biến môi trường từ Render Dashboard (hoặc dùng mặc định ở dưới để test)
+$host = getenv('DB_HOST') ?: 'dpg-d2m01khr0fns73be82sg-a';
+$port = getenv('DB_PORT') ?: 5432;
+$db   = getenv('DB_NAME') ?: 'khachsan';
+$user = getenv('DB_USER') ?: 'khachsan_user';
+$pass = getenv('DB_PASS') ?: 'OAs8nJLYoLptkgCj2dEffmzP3QZ8MnkC';
 
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: '';              // XAMPP mặc định rỗng
-$name = getenv('DB_NAME') ?: 'khachsan';
-$port = (int)(getenv('DB_PORT') ?: 3306);
+try {
+    // DSN cho PostgreSQL
+    $dsn = "pgsql:host=$host;port=$port;dbname=$db;";
 
-// Nếu có DB_HOST thì dùng, nếu không: nếu hostname 'db' resolve được thì dùng 'db' (Docker), ngược lại dùng 127.0.0.1 (XAMPP)
-$host = getenv('DB_HOST');
-if (!$host) {
-    $host = (gethostbyname('db') !== 'db') ? 'db' : '127.0.0.1';
+    // Kết nối PDO
+    $conn = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // bật exception
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // fetch dạng mảng
+    ]);
+
+    // Test: echo "✅ Kết nối PostgreSQL thành công!";
+} catch (PDOException $e) {
+    die("❌ Lỗi kết nối DB: " . $e->getMessage());
 }
-
-$conn = new mysqli($host, $user, $pass, $name, $port);
-$conn->set_charset('utf8mb4');

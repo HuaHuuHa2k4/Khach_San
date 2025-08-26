@@ -1,7 +1,8 @@
 FROM php:8.2-apache
 
-# PHP extensions
-RUN docker-php-ext-install mysqli pdo_mysql
+# Cài extension PostgreSQL
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 
 # Trỏ DocumentRoot vào /public và bật rewrite
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public

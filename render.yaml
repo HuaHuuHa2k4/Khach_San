@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: hotel-php
+    env: docker
+    plan: free
+    branch: main
+    buildCommand: docker build -t hotel-php .
+    startCommand: docker run -p 10000:80 hotel-php
+    envVars:
+      - key: DB_HOST
+        value: dpg-d2m01khr0fns73be82sg-a
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        value: khachsan
+      - key: DB_USER
+        value: khachsan_user
+      - key: DB_PASS
+        sync: false   # password bạn sẽ nhập trong Dashboard
