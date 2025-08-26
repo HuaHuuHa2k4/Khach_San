@@ -1,16 +1,16 @@
 <?php
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // để mysqli ném exception
-$host = getenv('DB_HOST') ?: 'db';
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 $user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: '';
-$name = getenv('DB_NAME') ?: 'khach_san';
+$pass = getenv('DB_PASS') ?: '';              // XAMPP mặc định rỗng
+$name = getenv('DB_NAME') ?: 'khachsan';
 $port = (int)(getenv('DB_PORT') ?: 3306);
 
-$conn = new mysqli($host, $user, $pass, $name, $port);
-$conn->set_charset('utf8mb4'); // tránh lỗi charset
-
-// Nếu cần SSL (ví dụ PlanetScale), bật theo ENV
-if (getenv('DB_SSL') === 'true') {
-    $conn->ssl_set(null, null, null, null, null);
-    $conn->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
+// Nếu có DB_HOST thì dùng, nếu không: nếu hostname 'db' resolve được thì dùng 'db' (Docker), ngược lại dùng 127.0.0.1 (XAMPP)
+$host = getenv('DB_HOST');
+if (!$host) {
+    $host = (gethostbyname('db') !== 'db') ? 'db' : '127.0.0.1';
 }
+
+$conn = new mysqli($host, $user, $pass, $name, $port);
+$conn->set_charset('utf8mb4');
