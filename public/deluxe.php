@@ -37,7 +37,7 @@ $username = $loggedIn ? htmlspecialchars($_SESSION['username']) : '';
     <section class="room-detail">
     <div class="room-detail-flex">
         <div class="room-detail-image">
-        <img src="../public/img/Anh_1.jpg" alt="Phòng Deluxe">
+        <img src="/img/Anh_1.jpg" alt="Phòng Deluxe">
         </div>
         <div class="room-detail-content">
         <h2>Phòng Deluxe</h2>
