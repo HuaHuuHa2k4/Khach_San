@@ -14,7 +14,7 @@ if (isset($_SESSION['success'])) {
 <head>
   <meta charset="UTF-8" />
   <title>Đăng nhập</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 </head>
   <style>
     input[type="text"], input[type="email"], input[type="password"], input[type="phone"] {
